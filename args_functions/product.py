@@ -20,11 +20,11 @@ def products(args):
         # Check if the products already exist
         if args.add.lower() in product_type:
             console.print(
-                "[bright_cyan][bold]The product alreadt exist![/bold][bright_cyan]")
+                f"[bright_cyan][bold]{args.add} already exist![/bold][bright_cyan]")
         else:
             # If the product is not in the list, create it in de csv file Producuts
             header = str(list(data_csv[0].keys())[0])
             add_row = dict(product_name=args.add.lower())
             create_rows("\\products", [header], [add_row])
             console.print(
-                "[spring_green3][bold]The product is added to the list![/bold][spring_green3]")
+                f"[spring_green3][bold]{args.add} is added to the list![/bold][spring_green3]")
