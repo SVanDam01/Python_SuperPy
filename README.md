@@ -2,10 +2,26 @@
 
 SuperPy is a Comment Line Interface (CLI) for inventory management.
 
-## **PRODUCTS** - Add new products & check for all products you offer
+## **TECHNICAL**
 
-1. products -a / --add <type: product name>
-2. products -c / --check
+This CLI is using the following moduls:
+
+> - Pandas
+> - Rich
+
+## **FUNCTIONALITIES**
+
+SuperPy has the following functionalities:
+
+### _PRODUCTS_
+
+Add new products & check for all products you offer.
+
+1. python superpy.py products -a / --add <type: product name>
+2. python superpy.py products -c / --check
+
+Exemple check:
+![An example of listing all products your company is offering](product_check.bmp)
 
 **FINANCIAL REPORTS** - Show the financial report
 
