@@ -21,7 +21,7 @@ Add new products & check for all products you offer.
 2. python superpy.py products -c / --check
 
 Exemple check:
-![An example of listing all products your company is offering](product_check.bmp)
+![An example of listing all products your company is offering](/assets/product_check.bmp)
 
 **FINANCIAL REPORTS** - Show the financial report
 
