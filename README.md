@@ -2,7 +2,7 @@
 
 SuperPy is a Comment Line Interface (CLI) for inventory management.
 
-# **PRODUCTS** - Add new products & check for all products you offer
+## **PRODUCTS** - Add new products & check for all products you offer
 
 1. products -a / --add <type: product name>
 2. products -c / --check
