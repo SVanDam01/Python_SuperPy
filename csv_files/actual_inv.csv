@@ -1,0 +1,8 @@
+purchase_id,purchase_date,product_name,quantity,purchase_price,expiration_date
+4,2023-03-15,appels,4,12.0,2023-03-24
+1,2023-03-12,bananen,1,9.2,2023-03-14
+6,2023-03-15,bananen,3,6.0,2023-03-17
+8,2022-02-17,bier,4,8.6,2024-02-23
+2,2023-03-14,peren,3,9.2,2023-03-23
+5,2023-03-15,peren,2,3.4,2023-03-23
+7,2023-03-17,peren,5,9.2,2023-03-23
