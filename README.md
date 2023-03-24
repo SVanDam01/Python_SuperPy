@@ -1,6 +1,6 @@
 # THIS IS SUPERPY!
 
-SuperPy for SuperM is a Comment Line Interface (CLI) for inventory management.
+SuperPy for SuperM (fictional supermarket) is a Comment Line Interface (CLI) for inventory management.
 
 ## **TECHNICAL**
 
