@@ -1,8 +1,8 @@
 # Import
 import pandas as pd
 from logic.business_logic import inventory_per_date
-from settings import console
-from settings import PATH_EXP
+from other.settings import console
+from other.settings import PATH_EXP
 from rich.table import Table
 
 # Functions for Inventory ARGS
@@ -13,7 +13,7 @@ def inventory(args):
         # Rebuild the inventory on a specific date per product or for all products
         data = inventory_per_date(args.date, args.item.lower())
         # Sort the data by id
-        sorted_data = sorted(data, key=lambda id: id['purchase_id'])
+        sorted_data = sorted(data, key=lambda id: id["purchase_id"])
         # filter on only stock that is not expired by the given date
         inventory_data = [i for i in sorted_data if (
             i["expiration_date"] == "" or i["expiration_date"] >= args.date)]

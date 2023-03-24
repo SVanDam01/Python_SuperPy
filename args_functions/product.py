@@ -1,7 +1,7 @@
 # Import
 from logic.csv_logic import read_rows, create_rows
 from logic.business_logic import product_list
-from settings import console
+from other.settings import console
 
 # Functions for Product ARGS
 

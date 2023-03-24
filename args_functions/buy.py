@@ -1,5 +1,5 @@
 # Import
-from settings import CSV_INVENT, CSV_PURCHASE, console
+from other.settings import CSV_INVENT, CSV_PURCHASE, console
 from logic.csv_logic import read_rows, create_rows
 
 # Functions for Buy ARGS

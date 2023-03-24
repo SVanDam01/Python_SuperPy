@@ -54,30 +54,32 @@ def calculation_total(date, items_list, report):
     return round(list_revenues, 2)
 
 # Change the actual inventory based. This function is used voor updating the current inventory
-# as to rebuild the history of the inventory on a specific date.
+# and to rebuild the history of the inventory on a specific date.
 
 
 def actual_inventory(item, date, qty, file):
-    actual_inv = read_rows(file)
+    actual_inv = file
     new_inventory = []
     keep_inventory = [i for i in actual_inv if i["product_name"]
-                      != item and i["purchase_date"] <= date]
+                      != item]
     for k in keep_inventory:
         new_inventory.append(k)
     update_inventory = [i for i in actual_inv if i["product_name"]
-                        == item and i["purchase_date"] <= date]
+                        == item]
+    sorted_data = sorted(
+        update_inventory, key=lambda id: int(id["purchase_id"]))
     qty_list = qty
     total_cost_purchase = 0
     # loop through the list of inventory untill the qty_list is 0. After each loop the amount will decr. by the amount af the row
     # of the qty of the current row is > 0 it will be added to the inventory list with the new velue. Otherwise is will be deleted.
     while qty_list > 0:
-        for i in update_inventory:
+        for i in sorted_data:
             if (int(i["quantity"]) > qty_list and qty_list != 0) and (i["expiration_date"] == "" or i["expiration_date"] > date):
                 cost = float(i["purchase_price"]) * qty_list
                 total_cost_purchase = total_cost_purchase + cost
                 new_qty = int(i["quantity"]) - qty_list
                 qty_list = 0
-                i["quantity"] = new_qty
+                i["quantity"] = str(new_qty)
                 new_inventory.append(i)
             elif (int(i["quantity"]) < qty_list or int(i["quantity"]) == qty_list) and (i["expiration_date"] == "" or i["expiration_date"] > date):
                 cost = float(i["purchase_price"]) * int(i["quantity"])
@@ -88,27 +90,24 @@ def actual_inventory(item, date, qty, file):
             else:
                 new_inventory.append(i)
     # return the new dict of the inventory and the mean of the cost price
+    new_inventory = sorted(new_inventory, key=lambda id: id["purchase_id"])
     mean_cost_purchase = total_cost_purchase / qty
     return mean_cost_purchase, new_inventory
 
 
-# Rebuild the inventory for on a specific date.
+# This function  This function is simular to the function above, but it has some small changes
+
 def inventory_per_date(date, item):
-    purchase_file = "\\purchase"
     sold_file = read_rows("\\sold")
     sold_items = [i for i in sold_file if i["sell_date"] <= date]
-    created_inventory = []
+    initual_stock = sorted(
+        read_rows("\\purchase"), key=lambda id: id["purchase_id"])
+    created_inventory = [
+        i for i in initual_stock if i["purchase_date"] <= date]
     for i in sold_items:
         callback = actual_inventory(
-            i["product_name"], i["sell_date"], int(i["quantity"]), purchase_file)[1]
-        for c in callback:
-            created_inventory.append(c)
-    if created_inventory == []:
-        purchase_file = read_rows("\\purchase")
-        stock_per_date = [
-            i for i in purchase_file if i["purchase_date"] <= date]
-        for s in stock_per_date:
-            created_inventory.append(s)
+            i["product_name"], i["sell_date"], int(i["quantity"]), created_inventory)[1]
+        created_inventory = callback
     if item != "all":
         filter_item = [
             i for i in created_inventory if i["product_name"] == item]

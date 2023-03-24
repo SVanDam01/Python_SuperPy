@@ -1,7 +1,7 @@
 # Imports
 import csv
 import os
-from settings import PATH_CSV
+from other.settings import PATH_CSV
 
 # Function for creating the CSV folder:
 

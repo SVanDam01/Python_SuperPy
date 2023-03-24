@@ -1,5 +1,5 @@
 # Import
-from settings import CSV_SALE, CSV_INVENT, CURRENT_DATE, console
+from other.settings import CSV_SALE, CSV_INVENT, CURRENT_DATE, console
 from logic.csv_logic import create_csv, read_rows, create_rows
 from logic.business_logic import checking_stock_for_sale, actual_inventory
 
@@ -14,12 +14,17 @@ def sell(args):
         data_csv = read_rows("\\sold")
         sell_id = len(data_csv) + 1
         # Construct data for sale.csv
+        actual_stock = sorted(read_rows("\\actual_inv"),
+                              key=lambda id: id["purchase_id"])
+        created_inventory = [
+            i for i in actual_stock if i["purchase_date"] <= CURRENT_DATE]
         get_costprice_and_updated_inventory = actual_inventory(
-            args.item.lower(), CURRENT_DATE, args.quantity, "\\actual_inv")
+            args.item.lower(), CURRENT_DATE, args.quantity, created_inventory)
         costprice = get_costprice_and_updated_inventory[0]
-        total_revenue_of_sale = args.quantity * args.price
-        total_cost_of_sale = args.quantity * costprice
-        total_profit_of_sale = total_revenue_of_sale - total_cost_of_sale
+        total_revenue_of_sale = round(args.quantity * args.price, 2)
+        total_cost_of_sale = round(args.quantity * costprice, 2)
+        total_profit_of_sale = round(
+            total_revenue_of_sale - total_cost_of_sale, 2)
         input_data = [sell_id, CURRENT_DATE,
                       args.item.lower(), args.quantity, args.price, costprice, round(total_revenue_of_sale, 2), round(total_profit_of_sale, 2)]
         sell_data = [dict(zip(CSV_SALE[1:], input_data))]

@@ -2,11 +2,11 @@
 import os
 from rich.panel import Panel
 from rich.markdown import Markdown
-from settings import PATH_CSV, PATH_EXP, CSV_FILES, console
+from other.settings import PATH_CSV, PATH_EXP, CSV_FILES, console
 from logic.csv_logic import create_csv_folder, create_csv
 from logic.process_logic import proces_args
 from logic.parser_logic import args
-from md import md
+from other.md import md, header
 
 
 # Do not change these lines.
@@ -16,11 +16,18 @@ __human_name__ = "superpy"
 
 # Your code below this line.
 
-
 # START PROGRAM
 
 
 def main():
+    # print the start screen of only Superpy.py is called
+    if args.command == None:
+        panel_md = Panel.fit(Markdown(md), title="SUPERPY")
+        console.print(panel_md)
+    else:
+        panel_md = Panel.fit(Markdown(header), title="SUPERPY")
+        console.print(panel_md)
+
     # Check and/or create CSV files
     isExist = os.path.exists(PATH_CSV)
     if not isExist:
@@ -34,11 +41,6 @@ def main():
 
     # Proceed commentline input by the args-parser
     proces_args(args)
-
-    # print the start screen of only Superpy.py is called
-    if args.command == None:
-        panel_md = Panel.fit(Markdown(md), title="SUPERPY")
-        console.print(panel_md)
 
 
 # --------------------------------------#

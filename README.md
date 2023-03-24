@@ -1,13 +1,15 @@
 # THIS IS SUPERPY!
 
-SuperPy is a Comment Line Interface (CLI) for inventory management.
+SuperPy for SuperM is a Comment Line Interface (CLI) for inventory management.
 
 ## **TECHNICAL**
 
 This CLI is using the following moduls:
 
-> - Pandas
-> - Rich
+> - [Pandas](https://pandas.pydata.org/docs/)
+> - [Rich](https://rich.readthedocs.io/en/stable/introduction.html)
+
+The folder csv_files has some dummy records. If you want to get a clean start. Please delete the folder. The first time you run the file, the folders will be automatically generated.
 
 ## **FUNCTIONALITIES**
 
@@ -17,7 +19,7 @@ SuperPy has the following functionalities:
 
 Add new products & check for all products you offer.
 
-> - python superpy.py products -a / --add <type: product name>
+> - python superpy.py products -a / --add _<type: product name>_
 > - python superpy.py products -c / --check
 
 **_Example check_**:
@@ -32,8 +34,8 @@ Add new products & check for all products you offer.
 
 Show the financial report for thge revenue of profit in a certain period
 
-> - python superpy.py report revenue -p <type: period> -i <type: all / product name>
-> - python superpy.py report profit -p <type: period> -i <type: all / product name>
+> - python superpy.py report revenue -p _<type: period> -i <type: all / product name>_
+> - python superpy.py report profit -p _<type: period> -i <type: all / product name>_
 
 **_Example revenue for one product on a single date_**:
 
@@ -47,7 +49,7 @@ Show the financial report for thge revenue of profit in a certain period
 
 Show the inventory on a certain date
 
-> - python superpy.py inventory -t <type: inventory or experiration> -p <type: period> -i <type: all / product name> s- <type: save (optional)>
+> - python superpy.py inventory -t _<type: inventory or experiration>_ -p _<type: period>_ -i _<type: all / product name>_ s- _<type: save (optional)>_
 
 **_Example inventory (only in de terminal)_**:
 
@@ -61,7 +63,7 @@ Show the inventory on a certain date
 
 Add the new bought products
 
-> - python superpy.py buy -d <type: date> -i <type: product name> -q <type: quantity> -p <type: price> e- <type: experation date (optional)>
+> - python superpy.py buy -d _<type: date>_ -i _<type: product name>_ -q _<type: quantity>_ -p _<type: price>_ e- _<type: experation date (optional)>_
 
 **_Example bought product without experation date_**:
 
@@ -75,7 +77,7 @@ Add the new bought products
 
 Add the sold products
 
-> - python superpy.py sell -i <type: product name> -q <type: quantity> -p <type: price>
+> - python superpy.py sell -i _<type: product name>_ -q _<type: quantity>_ -p _<type: price>_
 
 **_Example selling product when quantity is in stock_**:
 

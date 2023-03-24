@@ -1,7 +1,7 @@
 # Imports
 import argparse
-from settings import COMPANY_NAME, CURRENT_DATE, F_REPPORTS, I_REPPORTS
-from validate_input import validate_date, validate_period
+from other.settings import COMPANY_NAME, CURRENT_DATE, F_REPPORTS, I_REPPORTS
+from other.validate_input import validate_date, validate_period
 from args_functions.product import product_type
 
 
