@@ -48,10 +48,10 @@ def calculation_product(date, item, report):
 
 
 def calculation_total(date, items_list, report):
-    list_revenues = 0
+    list_total = 0
     for item in items_list:
-        list_revenues += int(calculation_product(date, item, report))
-    return round(list_revenues, 2)
+        list_total += int(calculation_product(date, item, report))
+    return round(list_total, 2)
 
 # Change the actual inventory based. This function is used voor updating the current inventory
 # and to rebuild the history of the inventory on a specific date.
