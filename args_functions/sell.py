@@ -1,7 +1,8 @@
 # Import
-from other.settings import CSV_SALE, CSV_INVENT, CURRENT_DATE, console
+from other.settings import CSV_SALE, CSV_INVENT, console
 from logic.csv_logic import create_csv, read_rows, create_rows
 from logic.business_logic import checking_stock_for_sale, actual_inventory
+from other.date import CURRENT_DATE
 
 # Functions for Sell ARGS
 

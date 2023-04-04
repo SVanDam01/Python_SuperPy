@@ -87,10 +87,31 @@ Add the sold products
 
 ![An example of selling products when quantity is NOT in stock](/assets/sell_not.bmp)
 
+### _6. DATE SETTINGS_
+
+Check the current date of the system and change this date. By default it is the actual date.
+
+> - python superpy.py date -c / --check
+> - python superpy.py date -a / --advance _<type: number of days (could also be minus)>_
+> - python superpy.py date -s / --set _<type: the new date (YYYT-MM-DD)>_
+
+**_Example check_**:
+
+![An example of checking the current date that is used in Superpy](/assets/check_date.bmp)
+
+**_Example advance the date_**:
+
+![An example of advancing the days by 10 days](/assets/advance_date.bmp)
+
+**_Example set the newe date_**:
+
+![An example of setting the new date in Superpy to 2023-02-15](/assets/new_date.bmp)
+
 ### _HELP_
 
 Get more information about the argument per functionality
 
+> - python superpy.py date -h
 > - python superpy.py products -h
 > - python superpy.py report -h
 > - python superpy.py inventory -h

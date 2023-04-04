@@ -3,7 +3,7 @@ import os
 from rich.panel import Panel
 from rich.markdown import Markdown
 from other.settings import PATH_CSV, PATH_EXP, CSV_FILES, console
-from logic.csv_logic import create_csv_folder, create_csv
+from logic.csv_logic import create_csv_folder, create_csv, create_rows, read_rows
 from logic.process_logic import proces_args
 from logic.parser_logic import args
 from other.md import md, header

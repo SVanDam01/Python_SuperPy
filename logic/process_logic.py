@@ -1,5 +1,6 @@
 # Imports
 from args_functions.product import products
+from args_functions.adjust_date import date
 from args_functions.buy import buy
 from args_functions.sell import sell
 from args_functions.report import report
@@ -12,6 +13,10 @@ def proces_args(args):
     # SET INPUT PRODUCTS
     if args.command == "products":
         products(args)
+
+    # SET INPUT DATE
+    if args.command == "date":
+        date(args)
 
     # SET INPUT BUY
     if args.command == "buy":

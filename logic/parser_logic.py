@@ -1,7 +1,8 @@
 # Imports
 import argparse
-from other.settings import COMPANY_NAME, CURRENT_DATE, F_REPPORTS, I_REPPORTS
+from other.settings import COMPANY_NAME, F_REPPORTS, I_REPPORTS
 from other.validate_input import validate_date, validate_period
+from other.date import CURRENT_DATE
 from args_functions.product import product_type
 
 
@@ -13,13 +14,21 @@ parser = argparse.ArgumentParser(
 subparser = parser.add_subparsers(
     dest="command", help="Select CL inout options")
 
-# SET SUB-ARGPARSER BUY INCLUDING ARGUMENTS
+# SET SUB-ARGPARSER SET DATE INCLUDING ARGUMENTS
+date_item = subparser.add_parser("date", help="adjust the date of the system")
+date_item.add_argument("-a", "--advance", metavar=" ",
+                       help="increment the current date by the given number in days")
+date_item.add_argument("-s", "--set", metavar=" ", type=validate_date,
+                       help="set the date of the system to the new date in de format YYYY-MM-DD")
+date_item.add_argument("-c", "--check", action='store_true',
+                       help="returns the current date setting of the system")
+
+# SET SUB-ARGPARSER PRODUCTS INCLUDING ARGUMENTS
 products_item = subparser.add_parser("products", help="Purchase items")
 products_item.add_argument("-a", "--add", metavar=" ",
                            help="Add new products before you can buy/sell them")
 products_item.add_argument("-c", "--check", action='store_true',
                            help="Check all administrated products")
-
 
 # SET SUB-ARGPARSER BUY INCLUDING ARGUMENTS
 buy_item = subparser.add_parser("buy", help="Purchase items")
