@@ -27,9 +27,3 @@ def date(args):
         set_date(new_date)
         console.print(
             f"[bright_cyan][bold]The new current date of the system is set to: {new_date}[/bold][bright_cyan]")
-
-
-# python superpy.py date -c
-# python superpy.py date -s 2023-02-15
-# python superpy.py date -a 10
-# python superpy.py sell -i bananen -q 5 -p 4
